@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>kalkulator sederhana</h1>
+  </header>
+  <main>
+    <section id="generated"></section>
+  </main>
+
+
+
+  <script>
+    let buttons = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "+",
+      "-",
+      "*",
+      "/",
+      "=",
+      "clear",
+    ];
+
+
+
+    let target = document.getElementById("generated")
+    for (i = 0; i < buttons.length; i++) {
+      let newElement = document.createElement("button")
+      newElement.innerHTML = buttons[i]
+      target.append(newElement);
+      newElement.addEventListener("click", clickButton)
+    }
+
+    let display = "";
+    let target2 = document.createElement("div");
+    target2.innerHTML = display;
+    target.append(target2);
+    let penampungan = "";
+
+    function clickButton() {
+      if (this.innerHTML === "=") {
+        let hasil = eval(penampungan);
+        target2.innerHTML = hasil;
+        console.log(hasil);
+      } if (this.innerHTML === "clear") {
+        penampungan = ""
+        target2.innerHTML = penampungan
+      } else {
+        penampungan = penampungan + this.innerHTML;
+        console.log(penampungan);
+        target2.innerHTML = penampungan;
+      }
+    }
+  </script>
+</body>
+
+</html>
